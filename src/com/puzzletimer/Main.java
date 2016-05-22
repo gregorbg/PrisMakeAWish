@@ -466,7 +466,8 @@ public class Main {
                     main.categoryManager,
                     main.scrambleManager,
                     main.solutionManager,
-                    main.sessionManager);
+                    main.sessionManager,
+                    main.solutionDAO);
                 mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                 mainFrame.setLocationRelativeTo(null);
                 mainFrame.setIconImage(icon);

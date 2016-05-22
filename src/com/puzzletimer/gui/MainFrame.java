@@ -48,9 +48,9 @@ import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 import javax.swing.UIManager.LookAndFeelInfo;
 
+import com.puzzletimer.database.SolutionDAO;
 import net.miginfocom.swing.MigLayout;
 
-import com.puzzletimer.Main;
 import com.puzzletimer.graphics.Panel3D;
 import com.puzzletimer.gui.SolutionEditingDialog.SolutionEditingDialogListener;
 import com.puzzletimer.models.Category;
@@ -760,6 +760,7 @@ public class MainFrame extends JFrame {
     private JMenuItem menuItemTips;
     private JMenuItem menuItemScrambleQueue;
     private JMenuItem menuItemHistory;
+    private JMenuItem menuItemPbs;
     private JMenuItem menuItemSessionSummary;
     private JMenuItem menuItemStackmatDeveloper;
     private JMenu menuCategory;
@@ -790,6 +791,7 @@ public class MainFrame extends JFrame {
     private TipsFrame tipsFrame;
     private ScrambleQueueFrame scrambleQueueFrame;
     private HistoryFrame historyFrame;
+    private PbFrame pbFrame;
     private SessionSummaryFrame sessionSummaryFrame;
     private StackmatDeveloperFrame stackmatDeveloperFrame;
     private CategoryManagerFrame categoryManagerDialog;
@@ -798,6 +800,7 @@ public class MainFrame extends JFrame {
     private AudioFormat audioFormat;
     private Mixer.Info mixerInfo;
 
+    private SolutionDAO solutionDAO;
 
     public MainFrame(
             MessageManager messageManager,
@@ -811,7 +814,8 @@ public class MainFrame extends JFrame {
             CategoryManager categoryManager,
             ScrambleManager scrambleManager,
             SolutionManager solutionManager,
-            SessionManager sessionManager) {
+            SessionManager sessionManager,
+            SolutionDAO solutionDAO) {
         this.messageManager = messageManager;
         this.puzzleProvider = puzzleProvider;
         this.scrambleParserProvider = scrambleParserProvider;
@@ -824,6 +828,8 @@ public class MainFrame extends JFrame {
         this.solutionManager = solutionManager;
         this.sessionManager = sessionManager;
         this.colorManager = colorManager;
+
+        this.solutionDAO = solutionDAO;
 
         setMinimumSize(new Dimension(800, 600));
 
@@ -991,6 +997,14 @@ public class MainFrame extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 MainFrame.this.historyFrame.setVisible(true);
+            }
+        });
+
+        //menuItemPbs
+        this.menuItemPbs.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                MainFrame.this.pbFrame.setVisible(true);
             }
         });
 
@@ -1302,6 +1316,7 @@ public class MainFrame extends JFrame {
         SwingUtilities.updateComponentTreeUI(this.tipsFrame);
         SwingUtilities.updateComponentTreeUI(this.scrambleQueueFrame);
         SwingUtilities.updateComponentTreeUI(this.historyFrame);
+        SwingUtilities.updateComponentTreeUI(this.pbFrame);
         SwingUtilities.updateComponentTreeUI(this.sessionSummaryFrame);
         SwingUtilities.updateComponentTreeUI(this.stackmatDeveloperFrame);
         SwingUtilities.updateComponentTreeUI(this.categoryManagerDialog);
@@ -1310,6 +1325,7 @@ public class MainFrame extends JFrame {
         this.tipsFrame.pack();
         this.scrambleQueueFrame.pack();
         this.historyFrame.pack();
+        this.pbFrame.pack();
         this.sessionSummaryFrame.pack();
         this.stackmatDeveloperFrame.pack();
         this.categoryManagerDialog.pack();
@@ -1424,6 +1440,12 @@ public class MainFrame extends JFrame {
         this.menuItemHistory.setMnemonic(KeyEvent.VK_H);
         this.menuItemHistory.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_H, menuShortcutKey | KeyEvent.ALT_MASK));
         menuView.add(this.menuItemHistory);
+
+        // menuItemHistory
+        this.menuItemPbs = new JMenuItem(_("main.pbs"));
+        this.menuItemPbs.setMnemonic(KeyEvent.VK_P);
+        this.menuItemPbs.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_P, menuShortcutKey | KeyEvent.ALT_MASK));
+        menuView.add(this.menuItemPbs);
 
         // menuItemSessionSummary
         this.menuItemSessionSummary = new JMenuItem(_("main.session_summary"));
@@ -1634,6 +1656,15 @@ public class MainFrame extends JFrame {
             this.configurationManager);
         this.historyFrame.setLocationRelativeTo(null);
         this.historyFrame.setIconImage(icon);
+
+        this.pbFrame = new PbFrame(
+                this.timerManager,
+                this.solutionManager,
+                this.categoryManager,
+                this.configurationManager,
+                this.solutionDAO);
+        this.pbFrame.setLocationRelativeTo(null);
+        this.pbFrame.setIconImage(icon);
 
         // session summary frame
         this.sessionSummaryFrame = new SessionSummaryFrame(
