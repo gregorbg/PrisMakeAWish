@@ -1,8 +1,7 @@
 package com.puzzletimer.gui;
 
-import static com.puzzletimer.Internationalization._;
+import static com.puzzletimer.Internationalization.i18n;
 
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.awt.datatransfer.Clipboard;
@@ -20,7 +19,6 @@ import javax.swing.JTextArea;
 import javax.swing.KeyStroke;
 
 import com.puzzletimer.state.TimerManager;
-import com.puzzletimer.util.SolutionUtils;
 
 import net.miginfocom.swing.MigLayout;
 
@@ -39,7 +37,7 @@ public class StackmatDeveloperFrame extends JFrame {
 
         createComponents();
         pack();
-        setTitle(_("stackmat_developer.title"));
+        setTitle(i18n("stackmat_developer.title"));
         
         timerManager.addListener(new TimerManager.Listener() {
             @Override
@@ -97,14 +95,14 @@ public class StackmatDeveloperFrame extends JFrame {
                 "[pref!][pref!]16[pref!][][pref!]16[pref!]"));
         
         // labelGraph
-        add(new JLabel(_("stackmat_developer.graph")), "span, wrap");
+        add(new JLabel(i18n("stackmat_developer.graph")), "span, wrap");
 
         // Graph
         this.graphPanel = new StackmatGraphPanel();
         add(this.graphPanel, "growx, height 90, span, wrap");
 
         // labelRawData
-        add(new JLabel(_("stackmat_developer.raw_data")), "wrap");
+        add(new JLabel(i18n("stackmat_developer.raw_data")), "wrap");
 
         // textAreaContents
         this.textAreaSummary = new JTextArea();
@@ -114,15 +112,15 @@ public class StackmatDeveloperFrame extends JFrame {
         add(scrollPane, "grow, wrap");
 
         // button update
-        this.buttonUpdate = new JButton(_("stackmat_developer.update"));
+        this.buttonUpdate = new JButton(i18n("stackmat_developer.update"));
         add(this.buttonUpdate, "split, grow");
 
         // button copy to clipboard
-        this.buttonCopyToClipboard = new JButton(_("stackmat_developer.copy_to_clipboard"));
+        this.buttonCopyToClipboard = new JButton(i18n("stackmat_developer.copy_to_clipboard"));
         add(this.buttonCopyToClipboard, "width 150, right, wrap");
 
         // buttonOk
-        this.buttonOk = new JButton(_("stackmat_developer.ok"));
+        this.buttonOk = new JButton(i18n("stackmat_developer.ok"));
         add(this.buttonOk, "tag ok");
     }
 
@@ -135,7 +133,7 @@ public class StackmatDeveloperFrame extends JFrame {
 	        this.graphPanel.setData(data);
 	        this.textAreaSummary.setText(text);
         } else {
-        	this.textAreaSummary.setText(_("stackmat_developer.error"));
+        	this.textAreaSummary.setText(i18n("stackmat_developer.error"));
         }
     }
 }

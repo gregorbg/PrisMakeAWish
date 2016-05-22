@@ -1,6 +1,6 @@
 package com.puzzletimer;
 
-import static com.puzzletimer.Internationalization._;
+import static com.puzzletimer.Internationalization.i18n;
 
 import java.awt.Image;
 import java.awt.Toolkit;
@@ -80,8 +80,8 @@ public class Main {
             JFrame frame = new JFrame();
             JOptionPane.showMessageDialog(
                 frame,
-                _("main.database_driver_load_error"),
-                _("main.prisma_puzzle_timer"),
+                i18n("main.database_driver_load_error"),
+                i18n("main.prisma_puzzle_timer"),
                 JOptionPane.ERROR_MESSAGE);
             System.exit(0);
         }
@@ -100,8 +100,8 @@ public class Main {
                 JFrame frame = new JFrame();
                 JOptionPane.showMessageDialog(
                     frame,
-                    String.format(_("main.database_error_message"), e.getMessage()),
-                    _("main.prisma_puzzle_timer"),
+                    String.format(i18n("main.database_error_message"), e.getMessage()),
+                    i18n("main.prisma_puzzle_timer"),
                     JOptionPane.ERROR_MESSAGE);
                 System.exit(0);
             }
@@ -115,8 +115,8 @@ public class Main {
             JFrame frame = new JFrame();
             JOptionPane.showMessageDialog(
                 frame,
-                _("main.concurrent_database_access_error_message"),
-                _("main.prisma_puzzle_timer"),
+                i18n("main.concurrent_database_access_error_message"),
+                i18n("main.prisma_puzzle_timer"),
                 JOptionPane.ERROR_MESSAGE);
             System.exit(0);
         }
@@ -151,8 +151,8 @@ public class Main {
                 JFrame frame = new JFrame();
                 JOptionPane.showMessageDialog(
                     frame,
-                    String.format(_("main.database_error_message"), e.getMessage()),
-                    _("main.prisma_puzzle_timer"),
+                    String.format(i18n("main.database_error_message"), e.getMessage()),
+                    i18n("main.prisma_puzzle_timer"),
                     JOptionPane.ERROR_MESSAGE);
                 System.exit(0);
             }
@@ -175,7 +175,7 @@ public class Main {
                 } catch (DatabaseException e) {
                     Main.this.messageManager.enqueueMessage(
                         MessageType.ERROR,
-                        String.format(_("main.database_error_message"), e.getMessage()));
+                        String.format(i18n("main.database_error_message"), e.getMessage()));
                 }
             }
         });
@@ -208,11 +208,11 @@ public class Main {
                 };
 
                 String[] descriptions = {
-                    _("main.single"),
-                    _("main.mean_of_3"),
-                    _("main.mean_of_100"),
-                    _("main.average_of_5"),
-                    _("main.average_of_12"),
+                    i18n("main.single"),
+                    i18n("main.mean_of_3"),
+                    i18n("main.mean_of_100"),
+                    i18n("main.average_of_5"),
+                    i18n("main.average_of_12"),
                 };
 
                 Solution[] solutions = Main.this.solutionManager.getSolutions();
@@ -232,7 +232,7 @@ public class Main {
                     if (measures[i].getWindowPosition() == 0 && sessionBest <= allTimeBest) {
                         Main.this.messageManager.enqueueMessage(
                             MessageType.INFORMATION,
-                            String.format(_("main.personal_record_message"),
+                            String.format(i18n("main.personal_record_message"),
                                 Main.this.categoryManager.getCurrentCategory().getDescription(),
                                 SolutionUtils.formatMinutes(measures[i].getValue(), Main.this.configurationManager.getConfiguration("TIMER-PRECISION"), measures[i].getRound()),
                                 descriptions[i]));
@@ -283,7 +283,7 @@ public class Main {
                 } catch (DatabaseException e) {
                     Main.this.messageManager.enqueueMessage(
                         MessageType.ERROR,
-                        String.format(_("main.database_error_message"), e.getMessage()));
+                        String.format(i18n("main.database_error_message"), e.getMessage()));
                 }
             }
         });
@@ -328,7 +328,7 @@ public class Main {
                 } catch (DatabaseException e) {
                     Main.this.messageManager.enqueueMessage(
                         MessageType.ERROR,
-                        String.format(_("main.database_error_message"), e.getMessage()));
+                        String.format(i18n("main.database_error_message"), e.getMessage()));
                 }
             }
 
@@ -339,7 +339,7 @@ public class Main {
                 } catch (DatabaseException e) {
                     Main.this.messageManager.enqueueMessage(
                         MessageType.ERROR,
-                        String.format(_("main.database_error_message"), e.getMessage()));
+                        String.format(i18n("main.database_error_message"), e.getMessage()));
                 }
             }
 
@@ -350,7 +350,7 @@ public class Main {
                 } catch (DatabaseException e) {
                     Main.this.messageManager.enqueueMessage(
                         MessageType.ERROR,
-                        String.format(_("main.database_error_message"), e.getMessage()));
+                        String.format(i18n("main.database_error_message"), e.getMessage()));
                 }
             }
 
@@ -361,7 +361,7 @@ public class Main {
                 } catch (DatabaseException e) {
                     Main.this.messageManager.enqueueMessage(
                         MessageType.ERROR,
-                        String.format(_("main.database_error_message"), e.getMessage()));
+                        String.format(i18n("main.database_error_message"), e.getMessage()));
                 }
             }
         });
@@ -392,7 +392,7 @@ public class Main {
                 } catch (DatabaseException e) {
                     Main.this.messageManager.enqueueMessage(
                         MessageType.ERROR,
-                        String.format(_("main.database_error_message"), e.getMessage()));
+                        String.format(i18n("main.database_error_message"), e.getMessage()));
                 }
             }
 
@@ -403,7 +403,7 @@ public class Main {
                 } catch (DatabaseException e) {
                     Main.this.messageManager.enqueueMessage(
                         MessageType.ERROR,
-                        String.format(_("main.database_error_message"), e.getMessage()));
+                        String.format(i18n("main.database_error_message"), e.getMessage()));
                 }
             }
 
@@ -416,7 +416,7 @@ public class Main {
                 } catch (DatabaseException e) {
                     Main.this.messageManager.enqueueMessage(
                         MessageType.ERROR,
-                        String.format(_("main.database_error_message"), e.getMessage()));
+                        String.format(i18n("main.database_error_message"), e.getMessage()));
                 }
             }
 
@@ -429,7 +429,7 @@ public class Main {
                 } catch (DatabaseException e) {
                     Main.this.messageManager.enqueueMessage(
                         MessageType.ERROR,
-                        String.format(_("main.database_error_message"), e.getMessage()));
+                        String.format(i18n("main.database_error_message"), e.getMessage()));
                 }
             }
         });

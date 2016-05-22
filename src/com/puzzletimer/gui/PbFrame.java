@@ -19,7 +19,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 
-import static com.puzzletimer.Internationalization._;
+import static com.puzzletimer.Internationalization.i18n;
 
 public class PbFrame extends JFrame {
     private String nullTime;
@@ -54,7 +54,7 @@ public class PbFrame extends JFrame {
             public void categoriesUpdated(Category[] categories, Category currentCategory) {
                 setTitle(
                         String.format(
-                                _("pbs.pbs_category"),
+                                i18n("pbs.pbs_category"),
                                 currentCategory.getDescription()));
             }
         });
@@ -119,7 +119,7 @@ public class PbFrame extends JFrame {
         add(scrollPane, "grow, wrap");
 
         // buttonOk
-        this.buttonOk = new JButton(_("pbs.ok"));
+        this.buttonOk = new JButton(i18n("pbs.ok"));
         add(this.buttonOk, "tag ok, span");
     }
 
@@ -130,14 +130,14 @@ public class PbFrame extends JFrame {
                 return false;
             }
         };
-        tableModel.addColumn(_("pbs.table_category"));
-        tableModel.addColumn(_("pbs.single"));
-        tableModel.addColumn(_("pbs.mo3"));
-        tableModel.addColumn(_("pbs.ao5"));
-        tableModel.addColumn(_("pbs.ao12"));
-        tableModel.addColumn(_("pbs.ao50"));
-        tableModel.addColumn(_("pbs.ao100"));
-        tableModel.addColumn(_("pbs.avg_global"));
+        tableModel.addColumn(i18n("pbs.table_category"));
+        tableModel.addColumn(i18n("pbs.single"));
+        tableModel.addColumn(i18n("pbs.mo3"));
+        tableModel.addColumn(i18n("pbs.ao5"));
+        tableModel.addColumn(i18n("pbs.ao12"));
+        tableModel.addColumn(i18n("pbs.ao50"));
+        tableModel.addColumn(i18n("pbs.ao100"));
+        tableModel.addColumn(i18n("pbs.avg_global"));
 
         this.table.setModel(tableModel);
 

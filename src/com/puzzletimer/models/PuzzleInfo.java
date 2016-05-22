@@ -1,6 +1,6 @@
 package com.puzzletimer.models;
 
-import static com.puzzletimer.Internationalization._;
+import static com.puzzletimer.Internationalization.i18n;
 
 public class PuzzleInfo {
     private final String puzzleId;
@@ -14,7 +14,7 @@ public class PuzzleInfo {
     }
 
     public String getDescription() {
-        return _("puzzle." + this.puzzleId);
+        return i18n("puzzle." + this.puzzleId);
     }
 
     @Override

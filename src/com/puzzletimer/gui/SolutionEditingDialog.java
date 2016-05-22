@@ -1,6 +1,6 @@
 package com.puzzletimer.gui;
 
-import static com.puzzletimer.Internationalization._;
+import static com.puzzletimer.Internationalization.i18n;
 
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
@@ -49,7 +49,7 @@ public class SolutionEditingDialog extends JDialog {
             final ConfigurationManager configurationManager) {
         super(owner, modal);
 
-        setTitle(_("solution_editing.solution_editor"));
+        setTitle(i18n("solution_editing.solution_editor"));
         setMinimumSize(new Dimension(480, 200));
 
         createComponents();
@@ -141,7 +141,7 @@ public class SolutionEditingDialog extends JDialog {
                 "[pref!]8[pref!]8[pref!]8[pref!]16[bottom]"));
 
         // labelStart
-        add(new JLabel(_("solution_editing.start")));
+        add(new JLabel(i18n("solution_editing.start")));
 
         // textFieldStart
         this.textFieldStart = new JTextField();
@@ -150,21 +150,21 @@ public class SolutionEditingDialog extends JDialog {
         add(this.textFieldStart);
 
         // labelTime
-        add(new JLabel(_("solution_editing.time")));
+        add(new JLabel(i18n("solution_editing.time")));
 
         // textFieldTime
         this.textFieldTime = new JTextField();
         add(this.textFieldTime);
 
         // labelPenalty
-        add(new JLabel(_("solution_editing.penalty")));
+        add(new JLabel(i18n("solution_editing.penalty")));
 
         // comboBoxPenalty
         this.comboBoxPenalty = new JComboBox();
         add(this.comboBoxPenalty);
 
         // labelScramble
-        add(new JLabel(_("solution_editing.scramble")));
+        add(new JLabel(i18n("solution_editing.scramble")));
 
         // textFieldScramble
         this.textFieldScramble = new JTextField();
@@ -173,11 +173,11 @@ public class SolutionEditingDialog extends JDialog {
         add(this.textFieldScramble);
 
         // buttonOk
-        this.buttonOk = new JButton(_("solution_editing.ok"));
+        this.buttonOk = new JButton(i18n("solution_editing.ok"));
         add(this.buttonOk, "tag ok, span 2, split");
 
         // buttonCancel
-        this.buttonCancel = new JButton(_("solution_editing.cancel"));
+        this.buttonCancel = new JButton(i18n("solution_editing.cancel"));
         add(this.buttonCancel, "tag cancel");
     }
 }
